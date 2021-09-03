@@ -26,7 +26,7 @@ whiteSuggar.url.querySerialize = function() {
     }
 
     return _vals;
-}
+};
 
 /**
  * replace url part of search and hash
@@ -80,4 +80,4 @@ whiteSuggar.url.convertSearchString = function(formData){
     }
 
     return _search.substring(1);
-}
+};
