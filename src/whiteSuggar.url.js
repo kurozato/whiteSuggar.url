@@ -29,6 +29,33 @@ whiteSuggar.url.querySerialize = function() {
 };
 
 /**
+ * convert hash string to name value pairs. {name:Xxx, value:Yyy}
+ * @param {string} mark #mark
+ * @param {string} hash #mark?key1=value1&key2=value2
+ * @returns {Array}
+ */
+whiteSuggar.url.userCustomSerialize = function(mark, hash) {
+    let _vals = [];
+    const _search = hash.replace(mark, '');
+    const _hash = _search.slice(1).split('&');
+    if(_max === 1 && _hash[0]=== '') return null;
+
+    let _ary = [];
+    let _col =[];
+    for(let i=0; i<_max; i++){
+        _ary = [];
+        _col = _hash[i].split('=');
+        _ary.push('name');
+        _ary.push('value');
+        _ary['name'] = _col[0];
+        _ary['value'] = decodeURIComponent(_col[1]);
+        _vals.push(_ary);
+    }
+
+    return _vals;
+};
+
+/**
  * replace url part of search and hash
  * @param {string} search 
  * @param {string} hash 
